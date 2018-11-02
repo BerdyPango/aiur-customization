@@ -1,0 +1,1 @@
+This is the customization part for TrinityCore(3.3.5a branch) wow private server. Applied to 「Aiur」。
