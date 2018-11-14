@@ -8,7 +8,7 @@ SET
 @Leatherworking := 900071,
 @Tailoring      := 900074,
 @Cooking        := 900085,
-@NAME           := "Sartie Sweettoe";
+@NAME           := "神秘商人";
 
 
 DELETE FROM creature WHERE id = @Alchemy;
@@ -43,15 +43,15 @@ DELETE FROM npc_vendor WHERE entry = @Cooking;
 
 
 REPLACE INTO `creature_template` (entry,modelid1,subname,name,minlevel,maxlevel,faction,npcflag) VALUES
-(@Alchemy,163,"Alchemy Materials",@NAME,80,80,35,128),
-(@Blacksmithing,163,"Blacksmithing Materials",@NAME,80,80,35,128),
-(@Enchanting,163,"Enchanting Materials",@NAME,80,80,35,128),
-(@Engineering,163,"Engineering Materials",@NAME,80,80,35,128),
-(@Inscription,163,"Inscription Materials",@NAME,80,80,35,128),
-(@Jewelcrafting,163,"Jewelcrafting Materials",@NAME,80,80,35,128),
-(@Leatherworking,163,"Leatherworking Materials",@NAME,80,80,35,128),
-(@Tailoring ,163,"Tailoring Materials",@NAME,80,80,35,128),
-(@Cooking,163,"Cooking Materials",@NAME,80,80,35,128);
+(@Alchemy,163,"炼金术供应商",@NAME,80,80,35,128),
+(@Blacksmithing,163,"锻造供应商",@NAME,80,80,35,128),
+(@Enchanting,163,"附魔供应商",@NAME,80,80,35,128),
+(@Engineering,163,"工程学供应商",@NAME,80,80,35,128),
+(@Inscription,163,"铭文供应商",@NAME,80,80,35,128),
+(@Jewelcrafting,163,"珠宝加工供应商",@NAME,80,80,35,128),
+(@Leatherworking,163,"制皮供应商",@NAME,80,80,35,128),
+(@Tailoring ,163,"裁缝供应商",@NAME,80,80,35,128),
+(@Cooking,163,"烹饪供应商",@NAME,80,80,35,128);
 
 REPLACE INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`extendedcost`) VALUES
  (@Jewelcrafting, '0', '41596', '0', '0', '0'),
