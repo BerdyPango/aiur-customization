@@ -10,7 +10,7 @@ SET
 @Cooking        := 900085,
 @NAME           := "神秘商人";
 
-
+# delete all entries from CREATURE table.
 DELETE FROM creature WHERE id = @Alchemy;
 DELETE FROM creature WHERE id = @Blacksmithing;
 DELETE FROM creature WHERE id = @Enchanting;
@@ -21,6 +21,7 @@ DELETE FROM creature WHERE id = @Leatherworking;
 DELETE FROM creature WHERE id = @Tailoring;
 DELETE FROM creature WHERE id = @Cooking;
 
+# delete all entries from CREATURE_TEMPLATE table.
 DELETE FROM creature_template WHERE entry = @Alchemy;
 DELETE FROM creature_template WHERE entry = @Blacksmithing;
 DELETE FROM creature_template WHERE entry = @Enchanting;
@@ -31,6 +32,7 @@ DELETE FROM creature_template WHERE entry = @Leatherworking;
 DELETE FROM creature_template WHERE entry = @Tailoring;
 DELETE FROM creature_template WHERE entry = @Cooking;
 
+# delete all entries from NPC_VENDOR table.
 DELETE FROM npc_vendor WHERE entry = @Alchemy;
 DELETE FROM npc_vendor WHERE entry = @Blacksmithing;
 DELETE FROM npc_vendor WHERE entry = @Enchanting;
@@ -41,18 +43,19 @@ DELETE FROM npc_vendor WHERE entry = @Leatherworking;
 DELETE FROM npc_vendor WHERE entry = @Tailoring;
 DELETE FROM npc_vendor WHERE entry = @Cooking;
 
-
+# insert or update entries in CREATURE_TEMPLATE table.
 REPLACE INTO `creature_template` (entry,modelid1,subname,name,minlevel,maxlevel,faction,npcflag) VALUES
-(@Alchemy,163,"炼金术供应商",@NAME,80,80,35,128),
-(@Blacksmithing,163,"锻造供应商",@NAME,80,80,35,128),
-(@Enchanting,163,"附魔供应商",@NAME,80,80,35,128),
-(@Engineering,163,"工程学供应商",@NAME,80,80,35,128),
-(@Inscription,163,"铭文供应商",@NAME,80,80,35,128),
-(@Jewelcrafting,163,"珠宝加工供应商",@NAME,80,80,35,128),
-(@Leatherworking,163,"制皮供应商",@NAME,80,80,35,128),
-(@Tailoring ,163,"裁缝供应商",@NAME,80,80,35,128),
-(@Cooking,163,"烹饪供应商",@NAME,80,80,35,128);
+(@Alchemy, 163,"炼金术供应商",@NAME,80,80,35,128),
+(@Blacksmithing, 163,"锻造供应商",@NAME,80,80,35,128),
+(@Enchanting, 163,"附魔供应商",@NAME,80,80,35,128),
+(@Engineering, 163,"工程学供应商",@NAME,80,80,35,128),
+(@Inscription, 163,"铭文供应商",@NAME,80,80,35,128),
+(@Jewelcrafting, 163,"珠宝加工供应商",@NAME,80,80,35,128),
+(@Leatherworking, 163,"制皮供应商",@NAME,80,80,35,128),
+(@Tailoring, 163,"裁缝供应商",@NAME,80,80,35,128),
+(@Cooking, 163,"烹饪供应商",@NAME,80,80,35,128);
 
+# insert or update entries for exsiting npcs in NPC_VENDOR table.
 REPLACE INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`extendedcost`) VALUES
  (@Jewelcrafting, '0', '41596', '0', '0', '0'),
  (@Cooking, '0', '43016', '0', '0', '0'),
@@ -522,6 +525,7 @@ REPLACE INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`extended
  (@Inscription, '0', '43103', '0', '0', '0'),
  (@Inscription, '0', '43102', '0', '0', '0'),
  (@Inscription, '0', '39774', '0', '0', '0'),
+ (@Inscription, '0', '39505', '0', '0', '0'),
  (@Inscription, '0', '39502', '0', '0', '0'),
  (@Inscription, '0', '39501', '0', '0', '0'),
  (@Inscription, '0', '39469', '0', '0', '0'),
@@ -1047,9 +1051,7 @@ REPLACE INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`extended
  (@Leatherworking, '0', '21887', '0', '0', '0'),
  (@Leatherworking, '0', '8170', '0', '0', '0');
 
-
-
-
+# insert or update customized entries in CREATURE table.
 REPLACE INTO creature (guid, id, map, spawnMask, phaseMask, modelid, equipment_id, position_x, position_y, position_z, orientation, spawntimesecs, spawndist, currentwaypoint, curhealth, curmana, MovementType, npcflag, unit_flags, dynamicflags) VALUE
  ('511853', @Alchemy, '0', '1', '1', '0', '0', '-8986.42', '761.01', '98.3301', '5.61438', '300', '0', '0', '1', '0', '0', '0', '0', '0'),
  ('511855', @Blacksmithing, '0', '1', '1', '0', '0', '-8424.03', '621.91', '95.5514', '2.45708', '300', '0', '0', '1', '0', '0', '0', '0', '0'),
