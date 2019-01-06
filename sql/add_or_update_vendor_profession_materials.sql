@@ -853,6 +853,7 @@ REPLACE INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`extended
  (@Cooking, '0', '44835', '0', '0', '0'),
  (@Cooking, '0', '44834', '0', '0', '0'),
  (@Cooking, '0', '43501', '0', '0', '0'),
+ (@Cooking, '0', '43013', '0', '0', '0'),
  (@Cooking, '0', '43012', '0', '0', '0'),
  (@Cooking, '0', '43011', '0', '0', '0'),
  (@Cooking, '0', '43010', '0', '0', '0'),
