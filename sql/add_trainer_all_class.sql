@@ -21,9 +21,25 @@ DELETE FROM creature WHERE id = @Trainer;
 DELETE FROM creature_template WHERE entry = @Trainer;
 DELETE FROM npc_trainer WHERE id = @Trainer;
 
+SET @Gossip_Menu_Id     := 50000;
+SET @Gossip_Menu_TextId := 68;
+SET @Gossip_Menu_Option_0 := 0;
+SET @Gossip_Menu_Option_1 := 1;
+SET @Gossip_Menu_Option_2 := 2;
+
+-- Create Gossip Menu
+REPLACE INTO `gossip_menu` (MenuId, TextId, VerifiedBuild) VALUES
+(@Gossip_Menu_Id, @Gossip_Menu_TextId, 0);
+
+-- Create Gossip Option
+REPLACE INTO `gossip_menu_option` (MenuId, OptionId, OptionIcon, OptionText, OptionBroadcastTextId, OptionType, OptionNpcFlag, ActionMenuID, ActionPoiID, BoxCoded, BoxMoney, BoxBroadcastTextID, VerifiedBuild) VALUES
+(@Gossip_Menu_Id, @Gossip_Menu_Option_0, 3, "我想接受更多职业技能方面的训练。", 7149, 5, 16, 0, 0, 0, 0, 0, 0),
+(@Gossip_Menu_Id, @Gossip_Menu_Option_1, 0, "我希望遗忘自己的天赋。", 29630, 16, 16, 4461, 0, 0, 0, 0, 0),
+(@Gossip_Menu_Id, @Gossip_Menu_Option_2, 0, "我该如何学习双天赋专精？", 33762, 20, 1, 10371, 0, 0, 0, 0, 0);
+
 -- Create Trainer NPC
-INSERT INTO creature_template (entry,modelid1,name,subname,minlevel,maxlevel,faction,npcflag,scale,unit_class,trainer_type,type) VALUES
-(@Trainer,@MODEL,@NAME,@SUBNAME,80,80,35,51,1,2,2,7);
+INSERT INTO creature_template (entry,modelid1,name,subname,minlevel,maxlevel,faction,npcflag,scale,unit_class,trainer_type,type,gossip_menu_id) VALUES
+(@Trainer,@MODEL,@NAME,@SUBNAME,80,80,35,49,1,2,2,7,@Gossip_Menu_Id);
 
 -- Insert spells to trainer
 INSERT INTO npc_trainer (id,spellid) VALUES
@@ -193,9 +209,9 @@ INSERT INTO `npc_trainer` (`id`,`spellid`,`moneycost`,`reqskillline`,`reqskillra
 (@Skills,750,10000,0,0,40); -- Plate Armor
 
 REPLACE INTO creature (guid, id, map, spawnMask, phaseMask, modelid, equipment_id, position_x, position_y, position_z, orientation, spawntimesecs, spawndist, currentwaypoint, curhealth, curmana, MovementType, npcflag, unit_flags, dynamicflags) VALUE
-('210069', @Trainer, '1', '1', '1', '0', '0', '1577.506714', '-4399.330078', '6.729856', '5.329268', '300', '0', '0', '4274', '3994', '0', '0', '134217728', '0'),
-('210070', @Trainer, '0', '1', '1', '0', '0', '-8847.464844', '628.872864', '94.809029', '0.543854', '300', '0', '0', '4274', '3994', '0', '0', '134217728', '0'),
-('210071', @Trainer, '571', '1', '1', '0', '0', '5809.138672', '645.406067', '647.518066', '0.923391', '300', '0', '0', '4274', '3994', '0', '0', '134217728', '0');
+('210069', @Trainer, '1', '1', '1', '0', '0', '1577.506714', '-4399.330078', '6.729856', '5.329268', '300', '0', '0', '4274', '3994', '0', '49', '134217728', '0'),
+('210070', @Trainer, '0', '1', '1', '0', '0', '-8847.464844', '628.872864', '94.809029', '0.543854', '300', '0', '0', '4274', '3994', '0', '49', '134217728', '0'),
+('210071', @Trainer, '571', '1', '1', '0', '0', '5809.138672', '645.406067', '647.518066', '0.923391', '300', '0', '0', '4274', '3994', '0', '49', '134217728', '0');
 
 DELETE FROM `spell_required` WHERE (`spell_id`=5784);
 DELETE FROM `spell_required` WHERE (`req_spell`=686);
